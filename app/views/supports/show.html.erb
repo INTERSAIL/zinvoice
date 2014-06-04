@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @support.customer_id %>
+</p>
+
+<p>
+  <strong>From:</strong>
+  <%= @support.from %>
+</p>
+
+<p>
+  <strong>To:</strong>
+  <%= @support.to %>
+</p>
+
+<p>
+  <strong>Ammount:</strong>
+  <%= @support.ammount %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @support.status %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @support.desc %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @support.note %>
+</p>
+
+<%= link_to 'Edit', edit_support_path(@support) %> |
+<%= link_to 'Back', supports_path %>

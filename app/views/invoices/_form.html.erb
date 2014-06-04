@@ -1,0 +1,24 @@
+<%= simple_form_for(@invoice) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :number %>
+      <%= f.input :emission_date %>
+      <%= f.input :value %>
+      <%= f.input :vat %>
+      <%= f.input :customer_id %>
+    </div>
+
+    <div id="invoice-rows">
+    <p>numero righe: <%=@invoice.invoice_rows.count%></p>
+    <%= f.fields_for :invoice_rows do |row| %>
+        <%= render 'invoice_rows/invoice_row_inline_fields', f: row %>
+    <%end%>
+    <%= link_to_add_inline_fields '+riga', f, :invoice_rows %>
+    </div>
+
+    <div class="form-actions">
+
+      <%= f.button :submit %>
+    </div>
+<% end %>

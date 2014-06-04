@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  customer_id: 1
+  from: 2014-05-01 22:24:01
+  to: 2014-05-01 22:24:01
+  ammount: 1
+  status: MyString
+  desc: MyText
+  note: MyText
+
+two:
+  customer_id: 1
+  from: 2014-05-01 22:24:01
+  to: 2014-05-01 22:24:01
+  ammount: 1
+  status: MyString
+  desc: MyText
+  note: MyText

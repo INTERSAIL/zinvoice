@@ -1,0 +1,12 @@
+<% invoice_row ||= @invoice_row %>
+<% invoice ||= @invoice %>
+<% invoice ||= @invoice_row.invoice %>
+<%=simple_form_for([invoice, invoice_row]) do |f| %>
+  <%= f.error_notification %>
+
+  <%= render 'invoice_row_fields', f: f %>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

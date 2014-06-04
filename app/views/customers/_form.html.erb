@@ -1,0 +1,14 @@
+<%= simple_form_for @customer, :html => { :class => 'form-inline' } do |f| %>
+  <%= f.input :name %>
+  <%= f.input :vat %>
+  <%= f.input :address %>
+  <%= f.input :cap %>
+  <%= f.input :city %>
+
+  <%= f.input :admin_email %>
+  <%= f.input :note %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                customers_path, :class => 'btn btn-default' %>
+<% end %>

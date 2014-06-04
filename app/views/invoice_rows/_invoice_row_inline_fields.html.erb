@@ -1,0 +1,17 @@
+<% div_id = "container_#{f.object.object_id}" %>
+
+<div id="<%=div_id%>" class="form-inline inline-row row">
+
+  <div class="row-data">
+  <%= f.input :desc, as: :string , placeholder:'description', inline_label:true, label:false,
+              wrapper_html: { class: 'col-xs-9'}, input_html: { style: "width: 100%"}  %>
+  <%= f.input :value, placeholder:'value', inline_label:true, label:false,
+              wrapper_html: { class: 'col-xs-2'}, input_html: { style: "width: 100%"}  %>
+  </div>
+
+  <div class="col-xs-1">
+    <%= f.input :_destroy, as: :hidden, input_html: { data: {destroy_field: 1} } %>
+    <button type="button" class="row-remove" data-target="<%=div_id%>" data-field="">Remove</button>
+  </div>
+
+</div>

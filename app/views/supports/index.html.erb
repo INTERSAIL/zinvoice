@@ -1,0 +1,39 @@
+<h1>Listing supports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Ammount</th>
+      <th>Status</th>
+      <th>Desc</th>
+      <th>Note</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @supports.each do |support| %>
+      <tr>
+        <td><%= support.customer_id %></td>
+        <td><%= support.from %></td>
+        <td><%= support.to %></td>
+        <td><%= support.ammount %></td>
+        <td><%= support.status %></td>
+        <td><%= support.desc %></td>
+        <td><%= support.note %></td>
+        <td><%= link_to 'Show', support %></td>
+        <td><%= link_to 'Edit', edit_support_path(support) %></td>
+        <td><%= link_to 'Destroy', support, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Support', new_support_path %>

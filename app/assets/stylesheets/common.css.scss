@@ -1,0 +1,47 @@
+@import "util";
+@import "bootstrap";
+
+
+body {
+  padding: 10px;
+}
+
+table {
+  @extend .table;
+  @extend .table-striped;
+}
+
+button, a, input[type=submit] {
+  @extend .btn;
+  @extend .btn-primary;
+  margin-right: 2px;
+}
+
+.form-actions {
+  @extend .pull-left;
+}
+
+.form-inputs{
+  margin-bottom: 10px;
+}
+
+.control-group{
+  @extend .form-group;
+}
+
+.inline-row{
+  margin-bottom: 1px;
+}
+
+.row-remove{
+  @extend .btn;
+  @extend .btn-xs;
+  @extend .btn-danger;
+}
+
+.destroyed{
+  .row-data *{
+    text-decoration: line-through;
+    color: lightgray;
+  }
+}
