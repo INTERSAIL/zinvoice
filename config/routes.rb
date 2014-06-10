@@ -4,6 +4,9 @@ Zinvoice::Application.routes.draw do
     resources :invoice_rows, shallow: true
   end
 
+  get 'form_for/invoice_rows', to: 'invoice_rows#form_for'
+  post 'form_for/invoice_rows', to: 'invoice_rows#form_for_update'
+
   resources :supports
 
   resources :customers

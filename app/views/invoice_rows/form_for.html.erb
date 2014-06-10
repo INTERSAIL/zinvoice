@@ -1,0 +1,9 @@
+<%=simple_form_for(@invoice_row, url: form_for_invoice_rows_path, remote: true) do |f| %>
+    <%= f.error_notification %>
+
+    <%= render 'invoice_row_fields', f: f %>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+<% end %>

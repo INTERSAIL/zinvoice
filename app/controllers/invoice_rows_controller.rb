@@ -62,14 +62,31 @@ class InvoiceRowsController < ApplicationController
     end
   end
 
+  def form_for
+    @invoice_row = InvoiceRow.new(invoice_row_params)
+    respond_to do |format|
+      format.html { render layout: false }
+      format.json { render json: @invoice_row, status: 200 }
+    end
+  end
+
+  def form_for_update
+    @invoice_row = InvoiceRow.new(invoice_row_params)
+    respond_to do |format|
+      format.html { render partial: 'invoice_row_inline_fields', layout: false }
+      format.json { render json: @invoice_row, status: 200 }
+    end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_invoice_row
-      @invoice_row = InvoiceRow.find(params[:id])
+      @invoice_row = InvoiceRow.find(params[:id]) if params[:id]
     end
 
     def set_invoice
-      @invoice = Invoice.find(params[:invoice_id])
+      @invoice = Invoice.find(params[:invoice_id]) if params[:invoice_id]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
