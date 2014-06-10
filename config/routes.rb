@@ -1,5 +1,7 @@
 Zinvoice::Application.routes.draw do
 
+  root to: 'invoices#index'
+
   resources :invoices do
     resources :invoice_rows, shallow: true
   end

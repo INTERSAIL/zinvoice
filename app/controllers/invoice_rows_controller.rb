@@ -1,5 +1,5 @@
 class InvoiceRowsController < ApplicationController
-  before_action :set_invoice_row, only: [:show, :edit, :update, :destroy]
+  before_action :set_invoice_row, only: [:show, :edit, :update, :destroy, :form_for, :form_for_update]
   before_action :set_invoice, only: [:index, :new, :create]
 
   # GET /invoice_rows
@@ -63,7 +63,8 @@ class InvoiceRowsController < ApplicationController
   end
 
   def form_for
-    @invoice_row = InvoiceRow.new(invoice_row_params)
+    @invoice_row ||= InvoiceRow.new
+    @invoice_row.assign_attributes invoice_row_params
     respond_to do |format|
       format.html { render layout: false }
       format.json { render json: @invoice_row, status: 200 }
@@ -71,9 +72,10 @@ class InvoiceRowsController < ApplicationController
   end
 
   def form_for_update
-    @invoice_row = InvoiceRow.new(invoice_row_params)
+    @invoice_row ||= InvoiceRow.new
+    @invoice_row.assign_attributes invoice_row_params
     respond_to do |format|
-      format.html { render partial: 'invoice_row_inline_fields', layout: false }
+      format.html { render layout: false }
       format.json { render json: @invoice_row, status: 200 }
     end
   end

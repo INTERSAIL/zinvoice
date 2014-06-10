@@ -1,5 +1,3 @@
-<% f ||= %>
-
 <% div_id = "container_#{f.object.object_id}" %>
 
 <div id="<%=div_id%>" class="form-inline inline-row row">
@@ -12,6 +10,9 @@
               wrapper_html: { class: 'col-xs-3'},
               input_html: { style: "width: 100%", data:{name: 'invoice_row[value]'}}  %>
   </div>
+  <% unless f.object.new_record? %>
+      <%= f.input :id, as: :hidden, input_html: { data:{name: 'id'}} %>
+  <% end %>
 
   <div class="row-actions">
     <%= f.input :_destroy, as: :hidden, input_html: { data: {destroy_field: 1} } %>

@@ -21,15 +21,16 @@ ready = ->
     url = $(this).data("edit-url")
     div = $("#"+$(this).data("target"))
     params = {}
-    div.find("input[data-name]").each (index) ->
+    div.find("*[data-name]").each (index) ->
       params[$(this).data('name')] = $(this).val()
-    console.log(params)
     $.get url, params, (data, textStatus, jqXHR) ->
-      $('#mainModal .modal-body').html(data)
-      $('#mainModal .btn-primary').one 'click', ->
-        #$.post url, $('#mainModal form').serialize, (data, textStatus, jqXHR) ->
-        #  alert(data)
-        alert $('#mainModal form').serialize()
+      modal = $('#mainModal')
+      modal.find('.modal-body').html(data)
+      modal.find('.btn-primary').one 'click', ->
+        q = modal.find('*').filter(':input').serialize()
+        $.post url, q, (data, textStatus, jqXHR) ->
+          div.replaceWith(data)
+          modal.modal('hide')
       $('#mainModal').modal()
 
 

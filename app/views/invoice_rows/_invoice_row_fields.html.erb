@@ -1,6 +1,5 @@
 <div class="form-inputs">
-  <p>Elementi: <%=InvoiceRow.count%></p>
-  <%= f.input :invoice_id %>
+  <%= f.input :id, as: :hidden unless f.object.new_record? %>
   <%= f.input :desc %>
   <%= f.input :value %>
 </div>
