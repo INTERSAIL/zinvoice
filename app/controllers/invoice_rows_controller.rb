@@ -1,6 +1,7 @@
 class InvoiceRowsController < ApplicationController
   before_action :set_invoice_row, only: [:show, :edit, :update, :destroy, :form_for, :form_for_update]
   before_action :set_invoice, only: [:index, :new, :create]
+  before_action :set_invoice_row_from_params, only: [:form_for, :form_for_update]
 
   # GET /invoice_rows
   # GET /invoice_rows.json
@@ -63,8 +64,6 @@ class InvoiceRowsController < ApplicationController
   end
 
   def form_for
-    @invoice_row ||= InvoiceRow.new
-    @invoice_row.assign_attributes invoice_row_params
     respond_to do |format|
       format.html { render layout: false }
       format.json { render json: @invoice_row, status: 200 }
@@ -72,8 +71,6 @@ class InvoiceRowsController < ApplicationController
   end
 
   def form_for_update
-    @invoice_row ||= InvoiceRow.new
-    @invoice_row.assign_attributes invoice_row_params
     respond_to do |format|
       format.html { render layout: false }
       format.json { render json: @invoice_row, status: 200 }
@@ -89,6 +86,12 @@ class InvoiceRowsController < ApplicationController
 
     def set_invoice
       @invoice = Invoice.find(params[:invoice_id]) if params[:invoice_id]
+    end
+
+    def set_invoice_row_from_params
+      @invoice_row ||= InvoiceRow.new
+      @invoice_row.assign_attributes invoice_row_params
+      @invoice_row.id = params[:invoice_row][:id] if params[:invoice_row][:id]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
