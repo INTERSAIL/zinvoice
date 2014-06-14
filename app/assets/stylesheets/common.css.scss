@@ -60,3 +60,7 @@ button, a, input[type=submit] {
     color: lightgray;
   }
 }
+
+span[data-json="1"] {
+  display:none;
+}
