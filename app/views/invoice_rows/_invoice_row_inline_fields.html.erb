@@ -4,15 +4,17 @@
 
   <div class="row-data">
   <%= f.input :desc, as: :string , placeholder:'description', inline_label:true, label:false,
-              wrapper_html: { class: 'col-xs-9'},
+              wrapper_html: { class: 'col-xs-11'},
               input_html: { style: "width: 100%", data:{name: 'invoice_row[desc]'}}  %>
-  <%= f.input :value, placeholder:'value', inline_label:true, label:false,
-              wrapper_html: { class: 'col-xs-3'},
-              input_html: { style: "width: 100%", data:{name: 'invoice_row[value]'}}  %>
+  <div class="col-xs-1">
+      <%= f.object.value %>
   </div>
-  <% unless f.object.new_record? %>
-      <%= f.input :id, as: :hidden, input_html: { data:{name: 'id'}} %>
-  <% end %>
+
+      <%= f.input :value, as: :hidden, input_html: { data:{name: 'invoice_row[value]'}}  %>
+      <% unless f.object.new_record? %>
+          <%= f.input :id, as: :hidden, input_html: { data:{name: 'id'}} %>
+      <% end %>
+  </div>
 
   <div class="row-actions">
     <%= f.input :_destroy, as: :hidden, input_html: { data: {destroy_field: 1} } %>

@@ -1,5 +1,5 @@
 class InvoiceRowsController < ApplicationController
-  before_action :set_invoice_row, only: [:show, :edit, :update, :destroy, :form_for, :form_for_update]
+  before_action :set_invoice_row, only: [:show, :edit, :update, :destroy]
   before_action :set_invoice, only: [:index, :new, :create]
   before_action :set_invoice_row_from_params, only: [:form_for, :form_for_update]
 
@@ -89,6 +89,7 @@ class InvoiceRowsController < ApplicationController
     end
 
     def set_invoice_row_from_params
+      set_invoice_row
       @invoice_row ||= InvoiceRow.new
       @invoice_row.assign_attributes invoice_row_params
       @invoice_row.id = params[:invoice_row][:id] if params[:invoice_row][:id]
