@@ -71,8 +71,6 @@ class InvoiceRowsController < ApplicationController
   end
 
   def form_for_update
-    @invoice_row.assign_attributes invoice_row_params
-
     respond_to do |format|
       format.html { render layout: false }
       format.json { render json: @invoice_row, status: 200 }
@@ -91,9 +89,10 @@ class InvoiceRowsController < ApplicationController
     end
 
     def set_invoice_row_from_params
-      json = ActiveSupport::JSON.decode(params[:json])
-      @invoice_row = InvoiceRow.find(json['id']) if json.key?('id')
-      @invoice_row ||= InvoiceRow.new(json)
+      set_invoice_row
+      @invoice_row ||= InvoiceRow.new
+      @invoice_row.assign_attributes invoice_row_params
+      @invoice_row.id = params[:invoice_row][:id] if params[:invoice_row][:id]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

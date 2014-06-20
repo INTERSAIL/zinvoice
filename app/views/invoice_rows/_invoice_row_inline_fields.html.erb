@@ -3,10 +3,17 @@
 <div id="<%=div_id%>" class="form-inline inline-row row">
 
   <div class="row-data">
-    <%= f.input :desc, as: :string , placeholder:'description', inline_label:true, label:false,
-              wrapper_html: { class: 'col-xs-12'},
+  <%= f.input :desc, as: :string , placeholder:'description', inline_label:true, label:false,
+              wrapper_html: { class: 'col-xs-11'},
               input_html: { style: "width: 100%", data:{name: 'invoice_row[desc]'}}  %>
-    <span data-json="1"><%= f.object.to_json %></span>
+  <div class="col-xs-1">
+      <%= f.object.value %>
+  </div>
+
+      <%= f.input :value, as: :hidden, input_html: { data:{name: 'invoice_row[value]'}}  %>
+      <% unless f.object.new_record? %>
+          <%= f.input :id, as: :hidden, input_html: { data:{name: 'id'}} %>
+      <% end %>
   </div>
 
   <div class="row-actions">
@@ -15,6 +22,5 @@
     <button type="button" class="row-edit" data-target="<%=div_id%>"
             data-edit-url="<%=form_for_invoice_rows_path%>">Edit</button>
   </div>
-
 
 </div>

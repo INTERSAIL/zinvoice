@@ -1,4 +1,4 @@
-<%=simple_form_for(@invoice_row, url: form_for_invoice_rows_path, method: :post) do |f| %>
+<%=simple_form_for(@invoice_row, method: :post) do |f| %>
     <%= f.error_notification %>
 
     <%= render 'invoice_row_fields', f: f %>
