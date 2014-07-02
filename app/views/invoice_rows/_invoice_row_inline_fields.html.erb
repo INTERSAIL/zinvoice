@@ -20,7 +20,7 @@
     <%= f.input :_destroy, as: :hidden, input_html: { data: {destroy_field: 1} } %>
     <button type="button" class="row-remove" data-target="<%=div_id%>">Remove</button>
     <button type="button" class="row-edit" data-target="<%=div_id%>"
-            data-edit-url="<%=form_for_invoice_rows_path%>">Edit</button>
+            data-edit-url="<%=form_for_invoice_rows_path @invoice%>">Edit</button>
   </div>
 
 </div>

@@ -28,9 +28,13 @@ ready = ->
         q = modal.find('*').filter(':input').serialize()
         $.post url, q, (data, textStatus, jqXHR) ->
           div.replaceWith(data)
+          modal.find('.btn-default').off
           modal.modal('hide')
-      $('#mainModal').modal()
 
+      $('#mainModal').one 'hidden.bs.modal', ->
+        $('#mainModal').find('.btn-primary').unbind 'click'
+
+      $('#mainModal').modal()
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
