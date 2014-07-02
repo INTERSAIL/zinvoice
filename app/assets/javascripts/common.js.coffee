@@ -20,7 +20,9 @@ ready = ->
   $('form').on 'click', '.row-edit', (event) ->
     url = $(this).data("edit-url")
     div = $("#"+$(this).data("target"))
-    params = {json: div.find('span[data-json="1"]').text()}
+    params = {}
+    div.find("*[data-name]").each (index) ->
+      params[$(this).data('name')] = $(this).val()
     $.get url, params, (data, textStatus, jqXHR) ->
       modal = $('#mainModal')
       modal.find('.modal-body').html(data)
