@@ -11,11 +11,11 @@ ready = ->
     if(fld.val() == '1')
       fld.val('0')
       div.removeClass('destroyed')
-      div.find('.row-data input').removeAttr('disabled')
+      div.find('.row-data input[type!=hidden]').removeAttr('disabled')
     else
       fld.val('1')
       div.addClass('destroyed')
-      div.find('.row-data input').attr('disabled', 'disabled')
+      div.find('.row-data input[type!=hidden]').attr('disabled', 'disabled')
 
   $('form').on 'click', '.row-edit', (event) ->
     url = $(this).data("edit-url")
