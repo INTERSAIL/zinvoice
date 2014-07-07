@@ -3,11 +3,16 @@ Zinvoice::Application.routes.draw do
   root to: 'invoices#index'
 
   resources :invoices do
-    resources :invoice_rows, shallow: true
+    #resources :invoice_rows, shallow: true
   end
 
-  get '/invoices/:invoice_id/form_for/invoice_row', to: 'invoice_rows#form_for', as: 'form_for_invoice_rows'
-  post '/invoices/:invoice_id/form_for/invoice_row', to: 'invoice_rows#form_for_update'
+  #get '/invoices/:invoice_id/form_for/invoice_row', to: 'invoice_rows#form_for', as: 'form_for_invoice_rows'
+  #post '/invoices/:invoice_id/form_for/invoice_row', to: 'invoice_rows#form_for_update'
+
+  resources :invoice_rows
+  get '/invoice_row/form_for', to: 'invoice_rows#form_for', as: 'form_for_invoice_rows'
+  post '/invoice_row/form_for', to: 'invoice_rows#form_for_update'
+
 
   resources :supports
 

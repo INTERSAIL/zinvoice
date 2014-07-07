@@ -92,8 +92,7 @@ class InvoiceRowsController < ApplicationController
       set_invoice_row
       @invoice_row ||= InvoiceRow.new
       @invoice_row.assign_attributes invoice_row_params
-      @invoice_row.id = params[:invoice_row][:id] if params[:invoice_row][:id]
-      set_invoice if @invoice_row.new_record?
+      #set_invoice if @invoice_row.new_record?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
