@@ -1,7 +1,9 @@
 class InvoiceRowsController < ApplicationController
+  include Inliner
+
   before_action :set_invoice_row, only: [:show, :edit, :update, :destroy]
-  before_action :set_invoice, only: [:index, :new, :create, :form_for_update]
-  before_action :set_invoice_row_from_params, only: [:form_for, :form_for_update]
+
+  inline_object :invoice_row, :invoice
 
   # GET /invoice_rows
   # GET /invoice_rows.json
@@ -26,7 +28,7 @@ class InvoiceRowsController < ApplicationController
   # POST /invoice_rows
   # POST /invoice_rows.json
   def create
-    @invoice_row = @invoice.invoice_rows.create(invoice_row_params)#InvoiceRow.new(invoice_row_params)
+    @invoice_row = @invoice.invoice_rows.create(invoice_row_params)
 
     respond_to do |format|
       if @invoice_row.save
@@ -63,36 +65,11 @@ class InvoiceRowsController < ApplicationController
     end
   end
 
-  def form_for
-    respond_to do |format|
-      format.html { render layout: false }
-      format.json { render json: @invoice_row, status: 200 }
-    end
-  end
-
-  def form_for_update
-    respond_to do |format|
-      format.html { render layout: false }
-      format.json { render json: @invoice_row, status: 200 }
-    end
-  end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_invoice_row
       @invoice_row = InvoiceRow.find(params[:id]) if params[:id]
-    end
-
-    def set_invoice
-      @invoice = Invoice.find(params[:invoice_id]) if params[:invoice_id]
-    end
-
-    def set_invoice_row_from_params
-      set_invoice_row
-      @invoice_row ||= InvoiceRow.new
-      @invoice_row.assign_attributes invoice_row_params
-      #set_invoice if @invoice_row.new_record?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

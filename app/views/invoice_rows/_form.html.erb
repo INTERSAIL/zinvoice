@@ -1,7 +1,4 @@
-<% path = [@invoice, @invoice_row] if @invoice %>
-<% path ||= @invoice_row %>
-
-<%=simple_form_for(path) do |f| %>
+<%=simple_form_for(@invoice ? [@invoice, @invoice_row] : @invoice_row) do |f| %>
   <%= f.error_notification %>
 
   <%= render 'invoice_row_fields', f: f %>

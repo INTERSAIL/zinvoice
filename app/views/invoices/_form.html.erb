@@ -11,12 +11,9 @@
 
     <div id="invoice-rows">
     <p>numero righe: <%=@invoice.invoice_rows.count%></p>
-    <%= f.fields_for :invoice_rows do |row| %>
-        <%= render 'invoice_rows/invoice_row_inline_fields', f: row %>
-    <%end%>
-      <%= link_to_add_inline_fields '+riga', f, :invoice_rows %>
 
-      <%= f.button :submit %>
+    <%= inline_fields_for(f, :invoice_rows, '+ riga') %>
 
+    <%= f.button :submit %>
 
 <% end %>
