@@ -12,7 +12,5 @@
  *
  *= require_tree .
  *= require jquery.ui.all
- *= require common
-
  *= require_self
  */

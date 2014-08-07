@@ -25,5 +25,9 @@
   <%= @invoice.customer_id %>
 </p>
 
+<dl>
+    <%= render @invoice.invoice_rows %>
+</dl>
+
 <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
 <%= link_to 'Back', invoices_path %>

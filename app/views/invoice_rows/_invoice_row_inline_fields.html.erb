@@ -1,26 +1,18 @@
-<% div_id = "container_#{f.object.object_id}" %>
+<%= f.inline_div do %>
 
-<div id="<%=div_id%>" class="form-inline inline-row row">
+  <%= f.inline_row_data do %>
+    <%= f.inline_input :desc, as: :string, placeholder: 'description', inline_label:true, label:false, wrapper_html: { class: 'col-xs-11'}, input_html: { style: 'width: 100%' } %>
 
-  <div class="row-data">
-  <%= f.input :desc, as: :string , placeholder:'description', inline_label:true, label:false,
-              wrapper_html: { class: 'col-xs-11'},
-              input_html: { style: "width: 100%", data:{name: 'invoice_row[desc]'}}  %>
-  <div class="col-xs-1">
+    <div class="col-xs-1">
       <%= f.object.value %>
-  </div>
+    </div>
 
-      <%= f.input :value, as: :hidden, input_html: { data:{name: 'invoice_row[value]'}}  %>
-      <% unless f.object.new_record? %>
-          <%= f.input :id, as: :hidden, input_html: { data:{name: 'id'}} %>
-      <% end %>
-  </div>
+    <%= f.inline_input :value, as: :hidden %>
+  <% end %>
 
-  <div class="row-actions">
-    <%= f.input :_destroy, as: :hidden, input_html: { data: {destroy_field: 1} } %>
-    <button type="button" class="row-remove" data-target="<%=div_id%>">Remove</button>
-    <button type="button" class="row-edit" data-target="<%=div_id%>"
-            data-edit-url="<%=form_for_invoice_rows_path%>">Edit</button>
-  </div>
+  <%= f.inline_row_actions do %>
+    <%= f.inline_button_remove('Remove') %>
+    <%= f.inline_button_edit('Edit') %>
+  <% end %>
 
-</div>
+<% end %>

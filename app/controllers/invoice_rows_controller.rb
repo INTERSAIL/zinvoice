@@ -8,7 +8,7 @@ class InvoiceRowsController < ApplicationController
   # GET /invoice_rows
   # GET /invoice_rows.json
   def index
-    @invoice_rows = @invoice.invoice_rows
+    @invoice_rows = @invoice ? @invoice.invoice_rows : InvoiceRow.all
   end
 
   # GET /invoice_rows/1
@@ -18,7 +18,7 @@ class InvoiceRowsController < ApplicationController
 
   # GET /invoice_rows/new
   def new
-    @invoice_row = @invoice.invoice_rows.new
+    @invoice_row = @invoice ? @invoice.invoice_rows.build : InvoiceRow.new
   end
 
   # GET /invoice_rows/1/edit

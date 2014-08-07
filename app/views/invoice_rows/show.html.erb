@@ -1,19 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Invoice:</strong>
-  <%= @invoice_row.invoice_id %>
-</p>
-
-<p>
-  <strong>Desc:</strong>
-  <%= @invoice_row.desc %>
-</p>
-
-<p>
-  <strong>Value:</strong>
-  <%= @invoice_row.value %>
-</p>
+<dl>
+    <%= render 'invoice_row', invoice_row: @invoice_row %>
+</dl>
 
 <%= link_to 'Edit', edit_invoice_row_path(@invoice_row) %> |
 <%= link_to 'Back', invoice_path(@invoice_row.invoice) %>
