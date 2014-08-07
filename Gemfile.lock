@@ -1,3 +1,9 @@
+PATH
+  remote: /Users/boncri/Progetti/Rails/inline_fields
+  specs:
+    inline_fields (0.0.1)
+      rails (~> 4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -166,6 +172,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   enumerize
   factory_girl_rails
+  inline_fields!
   jbuilder (~> 1.2)
   jquery-rails
   jquery-turbolinks

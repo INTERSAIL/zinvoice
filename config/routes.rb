@@ -10,9 +10,10 @@ Zinvoice::Application.routes.draw do
   #post '/invoices/:invoice_id/form_for/invoice_row', to: 'invoice_rows#form_for_update'
 
   resources :invoice_rows
-  get '/invoice_row/form_for', to: 'invoice_rows#form_for', as: 'form_for_invoice_rows'
-  post '/invoice_row/form_for', to: 'invoice_rows#form_for_update'
 
+  inline_route_for :invoice_rows
+#  get '/invoice_row/form_for', to: 'invoice_rows#form_for', as: 'form_for_invoice_rows'
+#  post '/invoice_row/form_for', to: 'invoice_rows#form_for_update'
 
   resources :supports
 
