@@ -26,21 +26,18 @@ ready = ->
     $.get url, params, (data, textStatus, jqXHR) ->
       modal = $('#mainModal')
       modal.find('.modal-body').html(data)
-#      modal.find('.btn-primary').one 'click', ->
-#        q = modal.find('*').filter(':input').serialize()
-#        $.post url, q, (data, textStatus, jqXHR) ->
-#          div.replaceWith(data)
-#          modal.find('.btn-default').off
-#          modal.modal('hide')
       modal.find('.btn-primary').one 'click', ->
         modalSubmit modal, url, div
 
-      $('#mainModal').on 'keypress', (event) ->
-        if event.keyCode
+      modal.on 'keypress', (event) ->
+        if (event.keyCode == 13)
           modalSubmit modal, url, div
           false
 
-      $('#mainModal').modal()
+      modal.one 'hidden.bs.modal', ->
+        modal.off 'keypress'
+
+      modal.modal()
 
 modalSubmit = (modal, url, div) ->
   q = modal.find('*').filter(':input').serialize()
