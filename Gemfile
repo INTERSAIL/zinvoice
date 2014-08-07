@@ -29,3 +29,5 @@ end
 
 
 gem "enumerize"
+
+gem 'inline_fields', github: 'boncri/inline_fields'
